@@ -1,6 +1,60 @@
 // 雛屋ちゃんファンサイト JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     
+    // 背景の星アニメーション
+    const bubbleContainer = document.getElementById('bubble-container');
+    
+    function createStar(initialY = null) {
+        const star = document.createElement('div');
+        
+        // ランダムな星のサイズ
+        const sizeType = Math.random();
+        if (sizeType < 0.6) {
+            star.className = 'bubble'; // 小さい星 (60%)
+        } else if (sizeType < 0.9) {
+            star.className = 'bubble medium'; // 中サイズ (30%)
+        } else {
+            star.className = 'bubble large'; // 大きい星 (10%)
+        }
+        
+        // ランダムな位置
+        star.style.left = Math.random() * window.innerWidth + 'px';
+        
+        // ランダムなアニメーション速度（より遅くして滑らかに）
+        const duration = Math.random() * 30 + 40; // 40〜70秒
+        star.style.setProperty('--duration', duration + 's');
+        
+        // 微細な横揺れ
+        const wobble = Math.random() * 0.5 - 0.25; // -0.25〜0.25
+        star.style.setProperty('--wobble', wobble);
+        
+        // 初期位置の設定
+        if (initialY !== null) {
+            // 画面の指定位置に配置
+            const progress = initialY / 100; // 0〜1の進行度
+            star.style.bottom = window.innerHeight * initialY / 100 + 'px';
+            star.style.animationDelay = `-${duration * progress}s`;
+            star.style.opacity = '1';
+        }
+        
+        bubbleContainer.appendChild(star);
+        
+        // アニメーション終了後に削除
+        setTimeout(() => {
+            star.remove();
+        }, duration * 1000);
+    }
+    
+    // 初期表示時に画面全体に星をランダムに配置
+    for (let i = 0; i < 150; i++) {
+        // 画面の0%〜100%の高さにランダムに配置
+        const initialPosition = Math.random() * 100;
+        createStar(initialPosition);
+    }
+    
+    // 定期的に新しい星を生成（画面下から）
+    setInterval(() => createStar(), 500);
+    
     // ページロード時のフェードインアニメーション
     const mainContent = document.querySelector('.main-content');
     mainContent.style.opacity = '0';
@@ -149,6 +203,14 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.textShadow = '0 0 30px rgba(138, 43, 226, 0.5)';
         });
     }
+    
+    // Twitterセクションのスクロールアニメーション
+    const twitterSection = document.querySelector('.twitter-section');
+    if (twitterSection) {
+        twitterSection.style.opacity = '0';
+        observer.observe(twitterSection);
+    }
+    
 
     // メッセージカードのランダム表示順序
     const messageCards = document.querySelectorAll('.message-card');

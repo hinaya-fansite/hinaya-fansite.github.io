@@ -4,12 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>雛屋ちゃん 非公式ファンサイト</title>
+    
+    <!-- ファビコン -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.svg">
+    
+    <!-- OGPタグ -->
+    <meta property="og:title" content="雛屋ちゃん 非公式ファンサイト">
+    <meta property="og:description" content="神秘的な黒の瞳と可愛らしい猫耳を持つメイドVtuber、雛屋ちゃんの非公式ファンサイトです。ゴシックな美しさと優雅な立ち振る舞いをご覧ください。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:image" content="https://example.com/img/20250724_131236918_iOS.jpg">
+    <meta property="og:site_name" content="雛屋ちゃん ファンサイト">
+    <meta property="og:locale" content="ja_JP">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="雛屋ちゃん 非公式ファンサイト">
+    <meta name="twitter:description" content="神秘的な黒の瞳と可愛らしい猫耳を持つメイドVtuber、雛屋ちゃんの非公式ファンサイトです。">
+    <meta name="twitter:image" content="https://example.com/img/20250724_131236918_iOS.jpg">
+    
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="stars"></div>
-    <div class="twinkling"></div>
+    <div class="bubble-container" id="bubble-container"></div>
     
     <header class="header">
         <div class="container">
@@ -88,6 +107,19 @@
                 </div>
             </section>
 
+            <!-- 最新のツイートセクション -->
+            <section class="twitter-section">
+                <h2 class="section-title">最新のツイート</h2>
+                <div class="twitter-container">
+                    <a class="twitter-timeline" href="https://twitter.com/HinayaKUKU?ref_src=twsrc%5Etfw">Tweets by HinayaKUKU</a>
+                </div>
+                <div class="twitter-follow">
+                    <a href="https://twitter.com/HinayaKUKU" target="_blank" class="follow-button">
+                        <span>雛屋ちゃんをフォロー</span>
+                    </a>
+                </div>
+            </section>
+
             <!-- ファンメッセージセクション -->
             <section class="message-section">
                 <h2 class="section-title">ファンからのメッセージ</h2>
@@ -117,5 +149,6 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
